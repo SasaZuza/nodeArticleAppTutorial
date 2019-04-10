@@ -1,0 +1,49 @@
+doctype html
+// Create unique layout that will be used by every other page so they don't need to repeat code
+html
+
+
+    head
+
+        title Knowladgebase
+        // Including bootstrap that we instaled in 'public' folder
+        link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        // Including style CSS file from this folder
+        link(rel='stylesheet' href='/css/style.css')
+
+    body
+
+        // Adding bootstrap4 navbar to app
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            a.navbar-brand(href='/') Articles App
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNavAltMarkup.collapse.navbar-collapse
+                .navbar-nav
+                a.nav-item.nav-link(href='/')
+                    | Home 
+                    span.sr-only (current)
+                if user
+                    a.nav-item.nav-link(href='/articles/add') Add Article
+                // If user is logged show only 'Logout' btn if not show 'Login' and 'Register'
+                if user 
+                    a.nav-item.ml-auto.nav-link(href='/users/logout') Logout
+                else
+                    a.nav-item.ml-auto.nav-link(href='/users/register') Register                         
+                    a.nav-item.nav-link(href='/users/login') Login
+        .container
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class="alert alert-danger") #{error.msg}
+            block content
+            br
+            hr
+            footer
+                p Copyright &copy; 2019 Sasa Zuza
+        
+        // Adding javascript and jQuery
+        script(src='/bower_components/jquery/dist/jquery.js') 
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        // Adding main.js file from this folder 
+        script(src='/js/main.js') 

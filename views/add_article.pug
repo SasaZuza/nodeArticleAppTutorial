@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    // Extending or using created layou from 'layout.pug' file   
+    // This is how we can call variables from 'app.js' file 
+    h2 #{title}
+    // Creating form to add articles in database with it
+    form(method='POST', action='/articles/add')
+        #form-group
+            label Title:
+            input.form-control(name='title', type='text')        
+        #form-group
+            label Body: 
+            textarea.form-control(name='body')
+        br
+        input.btn.btn-primary(type='submit', value='Submit')       

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    // Extending or using created layou from 'layout.pug' file
+    // h1 Articles App
+    // This is how we can call variables from 'app.js' file 
+    h2 #{title}
+    // Here add list and looping throught articles and displying them as list elements
+    ul.list-group
+        each article, i in articles
+            li.list-group-item 
+                a(href="/articles/"+article._id)= article.title        

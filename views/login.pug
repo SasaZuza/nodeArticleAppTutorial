@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    // Extending or using created layout from 'layout.pug' file   
+    // This is how we can call variables from 'app.js' file 
+    h2 Login here
+    // Creating form to add users 
+    form(method='POST', action='/users/login')        
+        #form-group
+            label Username:
+            input.form-control(name='username', type='text')
+        #form-group
+            label Password:
+            input.form-control(name='password', type='password')       
+        br
+        input.btn.btn-primary(type='submit', value='Submit')       

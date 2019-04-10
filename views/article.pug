@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    // Extending or using created layou from 'layout.pug' file
+    // After that we display articles elements defined in database and also in 'article.js' file
+    h1= article.title
+    h5 Created by #{author}
+    p= article.body
+    hr
+    // If user is loged in and if it's user which article is created here show buttons defined bellow
+    if user
+        if user.id ==article.author
+            // Adding button for editing articles content
+            a.btn.btn-success(href='/articles/edit/'+article._id) Edit
+            // Adding button for deleting article by it's id
+            a.btn.btn-danger.mx-4.delete-article(href='#', data-id=article._id) Delete
